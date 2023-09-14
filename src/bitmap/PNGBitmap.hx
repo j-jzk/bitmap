@@ -32,7 +32,16 @@ import format.png.*;
 		if (format == null || format == PixelFormat.RGBA) {
 			copy = PixelFormatUtil.rgbaToArgb(copy);
 		}
-		var data = Tools.build32ARGB(width, height, copy);
+		/*
+		9 = 3660 ms
+		7 = 1429 ms
+		5 = 1365 ms
+		3 =  980 ms
+		1 =  957 ms
+		0 = 8094 ms (!)
+		-1 (?) = 1566 ms
+		*/
+		var data = Tools.build32ARGB(width, height, copy, 3);
 		new Writer(output).write(data);
 	}
 
