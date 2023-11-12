@@ -43,7 +43,7 @@ import bitmap.support.Promise;
 				reader.addEventListener('loadend', e -> resolve(new js.lib.Uint8Array(reader.result)));
 				reader.readAsArrayBuffer(file);
 			})))).then(contents -> contents.map(content -> {
-				var bytes = haxe.io.Bytes.ofData(content);
+				var bytes = haxe.io.Bytes.ofData(content.buffer);
 				var input = new haxe.io.BytesInput(bytes);
 				var bitmap = new PNGBitmap();
 				bitmap.load(input);
